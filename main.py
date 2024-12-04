@@ -19,9 +19,9 @@ def add_custom_users(users):
     custom_users = [
         {
             "id": 11,
-            "name": "Your Name",
-            "username": "yourusername",
-            "email": "yourname@example.com",
+            "name": "Sanjuan",
+            "username": "crtn",
+            "email": "test@example.com",
             "address": {"city": "YourCity", "geo": {"lat": "48.8566", "lng": "2.3522"}},
         },
         {
@@ -73,7 +73,7 @@ def main():
 
     if search_query:
         # Filter data based on search query
-        results = data[data[search_option].str.contains(search_query)]
+        results = data[data[search_option].str.contains(search_query, case=False)]
 
         if not results.empty:
             # Create a selectbox to choose a user
@@ -96,6 +96,9 @@ def main():
                 )
         else:
             st.write("No results found.")
+    else:
+        df = pd.DataFrame(users)
+        st.write(df)
 
 
 main()
